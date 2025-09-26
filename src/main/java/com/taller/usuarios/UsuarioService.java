@@ -7,6 +7,9 @@ import java.util.Map;
  * Servicio que gestiona usuarios en memoria.
  */
 public class UsuarioService {
+    /**
+     * Almacena los usuarios en memoria utilizando su id como clave.
+     */
     private final Map<String, Usuario> usuarios = new HashMap<>();
 
     /**

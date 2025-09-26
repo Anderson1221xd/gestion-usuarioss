@@ -1,3 +1,3 @@
 GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-gestion-usuarios,com.taller.usuarios,UsuarioService,0,83,0,18,0,17,0,16,0,7
-gestion-usuarios,com.taller.usuarios,Usuario,2,112,4,8,0,22,4,13,0,11
+gestion-usuarios,com.taller.usuarios,UsuarioService,0,83,0,18,0,22,0,16,0,7
+gestion-usuarios,com.taller.usuarios,Usuario,2,112,4,8,1,26,4,13,0,11

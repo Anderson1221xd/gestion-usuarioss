@@ -3,42 +3,89 @@
 import java.util.HashMap;
 import java.util.Map;
 
-<span class="fc" id="L6">public class UsuarioService {</span>
-<span class="fc" id="L7">    private final Map&lt;String, Usuario&gt; usuarios = new HashMap&lt;&gt;();</span>
+/**
+ * Servicio que gestiona usuarios en memoria.
+ */
+<span class="fc" id="L9">public class UsuarioService {</span>
+<span class="fc" id="L10">    private final Map&lt;String, Usuario&gt; usuarios = new HashMap&lt;&gt;();</span>
 
-    public boolean crearUsuario(Usuario usuario) {
-<span class="fc bfc" id="L10" title="All 6 branches covered.">        if (usuario == null || usuario.getId() == null || usuarios.containsKey(usuario.getId())) {</span>
-<span class="fc" id="L11">            return false;</span>
+    /**
+     * Crea un nuevo usuario en el sistema.
+     *
+     * @param usuario usuario a crear
+     * @return true si se creó correctamente, false si ya existe o es inválido
+     */
+    public boolean crearUsuario(final Usuario usuario) {
+<span class="fc bfc" id="L19" title="All 4 branches covered.">        if (usuario == null || usuario.getId() == null</span>
+<span class="fc bfc" id="L20" title="All 2 branches covered.">                || usuarios.containsKey(usuario.getId())) {</span>
+<span class="fc" id="L21">            return false;</span>
         }
-<span class="fc" id="L13">        usuarios.put(usuario.getId(), usuario);</span>
-<span class="fc" id="L14">        return true;</span>
+<span class="fc" id="L23">        usuarios.put(usuario.getId(), usuario);</span>
+<span class="fc" id="L24">        return true;</span>
     }
 
-    public Usuario buscarUsuario(String id) {
-<span class="fc bfc" id="L18" title="All 2 branches covered.">        if (id == null) return null;</span>
-<span class="fc" id="L19">        return usuarios.get(id);</span>
+    /**
+     * Busca un usuario por su ID.
+     *
+     * @param id identificador único del usuario
+     * @return usuario encontrado o null si no existe
+     */
+    public Usuario buscarUsuario(final String id) {
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        if (id == null) {</span>
+<span class="fc" id="L35">            return null;</span>
+        }
+<span class="fc" id="L37">        return usuarios.get(id);</span>
     }
 
-    public boolean eliminarUsuario(String id) {
-<span class="fc bfc" id="L23" title="All 2 branches covered.">        if (id == null) return false;</span>
-<span class="fc bfc" id="L24" title="All 2 branches covered.">        return usuarios.remove(id) != null;</span>
+    /**
+     * Elimina un usuario por su ID.
+     *
+     * @param id identificador único del usuario
+     * @return true si fue eliminado, false si no existía
+     */
+    public boolean eliminarUsuario(final String id) {
+<span class="fc bfc" id="L47" title="All 2 branches covered.">        if (id == null) {</span>
+<span class="fc" id="L48">            return false;</span>
+        }
+<span class="fc bfc" id="L50" title="All 2 branches covered.">        return usuarios.remove(id) != null;</span>
     }
 
-    public boolean actualizarEmail(String id, String nuevoEmail) {
-<span class="fc bfc" id="L28" title="All 4 branches covered.">        if (id == null || nuevoEmail == null) return false;</span>
-<span class="fc" id="L29">        Usuario u = usuarios.get(id);</span>
-<span class="fc bfc" id="L30" title="All 2 branches covered.">        if (u == null) return false;</span>
-<span class="fc" id="L31">        u.setEmail(nuevoEmail);</span>
-<span class="fc" id="L32">        return true;</span>
+    /**
+     * Actualiza el email de un usuario.
+     *
+     * @param id identificador único del usuario
+     * @param nuevoEmail nuevo email a asignar
+     * @return true si se actualizó, false si el usuario no existe
+     */
+    public boolean actualizarEmail(final String id, final String nuevoEmail) {
+<span class="fc bfc" id="L61" title="All 4 branches covered.">        if (id == null || nuevoEmail == null) {</span>
+<span class="fc" id="L62">            return false;</span>
+        }
+<span class="fc" id="L64">        Usuario usuario = usuarios.get(id);</span>
+<span class="fc bfc" id="L65" title="All 2 branches covered.">        if (usuario == null) {</span>
+<span class="fc" id="L66">            return false;</span>
+        }
+<span class="fc" id="L68">        usuario.setEmail(nuevoEmail);</span>
+<span class="fc" id="L69">        return true;</span>
     }
 
+    /**
+     * Devuelve el número total de usuarios registrados.
+     *
+     * @return cantidad de usuarios
+     */
     public int contarUsuarios() {
-<span class="fc" id="L36">        return usuarios.size();</span>
+<span class="fc" id="L78">        return usuarios.size();</span>
     }
 
-    // Extra para pruebas
-    public boolean existeUsuario(String id) {
-<span class="fc" id="L41">        return usuarios.containsKey(id);</span>
+    /**
+     * Verifica si un usuario existe.
+     *
+     * @param id identificador único del usuario
+     * @return true si existe, false en caso contrario
+     */
+    public boolean existeUsuario(final String id) {
+<span class="fc" id="L88">        return usuarios.containsKey(id);</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

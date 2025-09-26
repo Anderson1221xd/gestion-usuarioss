@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.taller.usuarios.UsuarioServiceTest" time="0.215" tests="22" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="com.taller.usuarios.UsuarioServiceTest" time="0.169" tests="22" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.specification.version" value="24"/>
     <property name="sun.cpu.isalist" value="amd64"/>
@@ -15,7 +15,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="user.country" value="CO"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk-24\bin"/>
-    <property name="sun.java.command" value="C:\Users\Andersonic\AppData\Local\Temp\surefire13304611462025918414\surefirebooter-20250925202604652_3.jar C:\Users\Andersonic\AppData\Local\Temp\surefire13304611462025918414 2025-09-25T20-26-04_423-jvmRun1 surefire-20250925202604652_1tmp surefire_0-20250925202604652_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\Andersonic\AppData\Local\Temp\surefire7606627985376255445\surefirebooter-20250925211500231_3.jar C:\Users\Andersonic\AppData\Local\Temp\surefire7606627985376255445 2025-09-25T21-15-00_052-jvmRun1 surefire-20250925211500231_1tmp surefire_0-20250925211500231_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="C:\Users\Andersonic\Desktop\gestion-usuarioss\gestion-usuarioss\target\test-classes;C:\Users\Andersonic\Desktop\gestion-usuarioss\gestion-usuarioss\target\classes;C:\Users\Andersonic\.m2\repository\org\junit\jupiter\junit-jupiter\5.10.2\junit-jupiter-5.10.2.jar;C:\Users\Andersonic\.m2\repository\org\junit\jupiter\junit-jupiter-api\5.10.2\junit-jupiter-api-5.10.2.jar;C:\Users\Andersonic\.m2\repository\org\opentest4j\opentest4j\1.3.0\opentest4j-1.3.0.jar;C:\Users\Andersonic\.m2\repository\org\junit\platform\junit-platform-commons\1.10.2\junit-platform-commons-1.10.2.jar;C:\Users\Andersonic\.m2\repository\org\apiguardian\apiguardian-api\1.1.2\apiguardian-api-1.1.2.jar;C:\Users\Andersonic\.m2\repository\org\junit\jupiter\junit-jupiter-params\5.10.2\junit-jupiter-params-5.10.2.jar;C:\Users\Andersonic\.m2\repository\org\junit\jupiter\junit-jupiter-engine\5.10.2\junit-jupiter-engine-5.10.2.jar;C:\Users\Andersonic\.m2\repository\org\junit\platform\junit-platform-engine\1.10.2\junit-platform-engine-1.10.2.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="line.separator" value="&#10;"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
-    <property name="surefire.real.class.path" value="C:\Users\Andersonic\AppData\Local\Temp\surefire13304611462025918414\surefirebooter-20250925202604652_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\Andersonic\AppData\Local\Temp\surefire7606627985376255445\surefirebooter-20250925211500231_3.jar"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="24.0.2+12-54"/>
@@ -58,26 +58,26 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="68.0"/>
   </properties>
-  <testcase name="eliminarUsuario_existente_deberiaEliminarlo" classname="com.taller.usuarios.UsuarioServiceTest" time="0.064"/>
-  <testcase name="actualizarEmail_conEmailNull_deberiaRetornarFalse" classname="com.taller.usuarios.UsuarioServiceTest" time="0.005"/>
-  <testcase name="toString_noEsNull" classname="com.taller.usuarios.UsuarioServiceTest" time="0.004"/>
-  <testcase name="constructorYGetters_funcionanCorrectamente" classname="com.taller.usuarios.UsuarioServiceTest" time="0.003"/>
+  <testcase name="eliminarUsuario_existente_deberiaEliminarlo" classname="com.taller.usuarios.UsuarioServiceTest" time="0.051"/>
+  <testcase name="actualizarEmail_conEmailNull_deberiaRetornarFalse" classname="com.taller.usuarios.UsuarioServiceTest" time="0.003"/>
+  <testcase name="toString_noEsNull" classname="com.taller.usuarios.UsuarioServiceTest" time="0.005"/>
+  <testcase name="constructorYGetters_funcionanCorrectamente" classname="com.taller.usuarios.UsuarioServiceTest" time="0.004"/>
   <testcase name="eliminarUsuario_conIdNull_deberiaRetornarFalse" classname="com.taller.usuarios.UsuarioServiceTest" time="0.001"/>
   <testcase name="crearUsuario_deberiaAgregarNuevoUsuario" classname="com.taller.usuarios.UsuarioServiceTest" time="0.001"/>
   <testcase name="buscarUsuario_inexistente_deberiaRetornarNull" classname="com.taller.usuarios.UsuarioServiceTest" time="0.002"/>
-  <testcase name="crearUsuario_conIdNull_noDebeAgregar" classname="com.taller.usuarios.UsuarioServiceTest" time="0.003"/>
-  <testcase name="equals_conNullYDistintoTipo_devuelveFalse" classname="com.taller.usuarios.UsuarioServiceTest" time="0.003"/>
+  <testcase name="crearUsuario_conIdNull_noDebeAgregar" classname="com.taller.usuarios.UsuarioServiceTest" time="0.002"/>
+  <testcase name="equals_conNullYDistintoTipo_devuelveFalse" classname="com.taller.usuarios.UsuarioServiceTest" time="0.002"/>
   <testcase name="equalsYHashCode_funcionanCorrectamente" classname="com.taller.usuarios.UsuarioServiceTest" time="0.002"/>
   <testcase name="eliminarUsuario_inexistente_deberiaRetornarFalse" classname="com.taller.usuarios.UsuarioServiceTest" time="0.002"/>
-  <testcase name="existeUsuario_deberiaRetornarTrueSiExiste" classname="com.taller.usuarios.UsuarioServiceTest" time="0.003"/>
-  <testcase name="actualizarEmail_usuarioNoExistente_deberiaRetornarFalse" classname="com.taller.usuarios.UsuarioServiceTest" time="0.003"/>
-  <testcase name="buscarUsuario_existente_deberiaRetornarUsuario" classname="com.taller.usuarios.UsuarioServiceTest" time="0.002"/>
-  <testcase name="crearUsuario_conIdDuplicado_noDebeAgregar" classname="com.taller.usuarios.UsuarioServiceTest" time="0.001"/>
+  <testcase name="existeUsuario_deberiaRetornarTrueSiExiste" classname="com.taller.usuarios.UsuarioServiceTest" time="0.001"/>
+  <testcase name="actualizarEmail_usuarioNoExistente_deberiaRetornarFalse" classname="com.taller.usuarios.UsuarioServiceTest" time="0.001"/>
+  <testcase name="buscarUsuario_existente_deberiaRetornarUsuario" classname="com.taller.usuarios.UsuarioServiceTest" time="0.004"/>
+  <testcase name="crearUsuario_conIdDuplicado_noDebeAgregar" classname="com.taller.usuarios.UsuarioServiceTest" time="0.002"/>
   <testcase name="buscarUsuario_conIdNull_deberiaRetornarNull" classname="com.taller.usuarios.UsuarioServiceTest" time="0.001"/>
-  <testcase name="crearUsuario_conUsuarioNull_noDebeAgregar" classname="com.taller.usuarios.UsuarioServiceTest" time="0.002"/>
+  <testcase name="crearUsuario_conUsuarioNull_noDebeAgregar" classname="com.taller.usuarios.UsuarioServiceTest" time="0.001"/>
   <testcase name="setters_deberianActualizarValores" classname="com.taller.usuarios.UsuarioServiceTest" time="0.001"/>
-  <testcase name="existeUsuario_deberiaRetornarFalseSiNoExiste" classname="com.taller.usuarios.UsuarioServiceTest" time="0.002"/>
+  <testcase name="existeUsuario_deberiaRetornarFalseSiNoExiste" classname="com.taller.usuarios.UsuarioServiceTest" time="0.001"/>
   <testcase name="actualizarEmail_conIdNull_deberiaRetornarFalse" classname="com.taller.usuarios.UsuarioServiceTest" time="0.001"/>
   <testcase name="contarUsuarios_deberiaRetornarCantidadCorrecta" classname="com.taller.usuarios.UsuarioServiceTest" time="0.001"/>
-  <testcase name="actualizarEmail_existente_deberiaActualizarlo" classname="com.taller.usuarios.UsuarioServiceTest" time="0.001"/>
+  <testcase name="actualizarEmail_existente_deberiaActualizarlo" classname="com.taller.usuarios.UsuarioServiceTest" time="0.002"/>
 </testsuite>
