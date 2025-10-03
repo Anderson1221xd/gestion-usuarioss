@@ -42,8 +42,7 @@ class UsuarioServiceTest {
     /** Verifica que se pueda crear un usuario válido. */
     @Test
     void crearUsuarioDeberiaAgregarNuevoUsuario() {
-        Usuario u =
-                new Usuario("1", "Anderson", "anderson@mail.com", "1234");
+        Usuario u = new Usuario("1", "Anderson", "anderson@mail.com", "1234");
         assertTrue(service.crearUsuario(u));
         assertEquals(1, service.contarUsuarios());
     }
@@ -119,8 +118,7 @@ class UsuarioServiceTest {
     /** Verifica que se pueda actualizar el email de un usuario existente. */
     @Test
     void actualizarEmailExistenteDeberiaActualizarlo() {
-        Usuario u =
-                new Usuario("1", "Anderson", "old@mail.com", "1234");
+        Usuario u = new Usuario("1", "Anderson", "old@mail.com", "1234");
         service.crearUsuario(u);
         assertTrue(service.actualizarEmail("1", "new@mail.com"));
         assertEquals(
@@ -144,8 +142,7 @@ class UsuarioServiceTest {
     /** Verifica que no se pueda actualizar el email a null. */
     @Test
     void actualizarEmailConEmailNullDeberiaRetornarFalse() {
-        Usuario u =
-                new Usuario("1", "Anderson", "old@mail.com", "1234");
+        Usuario u = new Usuario("1", "Anderson", "old@mail.com", "1234");
         service.crearUsuario(u);
         assertFalse(service.actualizarEmail("1", null));
     }
@@ -200,12 +197,9 @@ class UsuarioServiceTest {
     /** Verifica que equals y hashCode estén implementados correctamente. */
     @Test
     void equalsYHashCodeFuncionanCorrectamente() {
-        Usuario u1 =
-                new Usuario("1", "Anderson", "a@mail.com", "1234");
-        Usuario u2 =
-                new Usuario("1", "Anderson", "a@mail.com", "1234");
-        Usuario u3 =
-                new Usuario("2", "Sebas", "s@mail.com", "5678");
+        Usuario u1 = new Usuario("1", "Anderson", "a@mail.com", "1234");
+        Usuario u2 = new Usuario("1", "Anderson", "a@mail.com", "1234");
+        Usuario u3 = new Usuario("2", "Sebas", "s@mail.com", "5678");
 
         assertEquals(u1, u2);
         assertEquals(u1.hashCode(), u2.hashCode());
@@ -215,8 +209,7 @@ class UsuarioServiceTest {
     /** Verifica que equals retorne false al comparar con null o con otro tipo. */
     @Test
     void equalsConNullYDistintoTipoDevuelveFalse() {
-        Usuario u =
-                new Usuario("1", "Anderson", "a@mail.com", "1234");
+        Usuario u = new Usuario("1", "Anderson", "a@mail.com", "1234");
         assertNotEquals(u, null);
         assertNotEquals(u, "un string");
     }
@@ -224,8 +217,7 @@ class UsuarioServiceTest {
     /** Verifica que toString no retorne null y contenga la palabra "Usuario". */
     @Test
     void toStringNoEsNull() {
-        Usuario u =
-                new Usuario("1", "Anderson", "a@mail.com", "1234");
+        Usuario u = new Usuario("1", "Anderson", "a@mail.com", "1234");
         assertTrue(u.toString().contains("Usuario"));
     }
 }
