@@ -59,7 +59,7 @@ jobs:
         run: mvn clean verify
 
       - name: Guardar reporte de cobertura
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4   # 🔥 actualizado
         with:
           name: coverage-report
           path: target/site/jacoco/
@@ -81,7 +81,7 @@ jobs:
         run: mvn package -DskipTests
 
       - name: Subir artefacto empaquetado
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4   # 🔥 actualizado
         with:
           name: app-build
           path: target/*.jar
