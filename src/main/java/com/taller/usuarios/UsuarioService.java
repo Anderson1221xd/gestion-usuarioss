@@ -15,7 +15,8 @@ public class UsuarioService {
      * @return true si se creó correctamente, false si ya existe o es inválido
      */
     public boolean crearUsuario(final Usuario usuario) {
-        if (usuario == null || usuario.getId() == null || usuarios.containsKey(usuario.getId())) {
+        if (usuario == null || usuario.getId()
+                == null || usuarios.containsKey(usuario.getId())) {
             return false;
         }
         usuarios.put(usuario.getId(), usuario);
