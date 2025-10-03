@@ -1,4 +1,2 @@
-/**
- * Paquete que contiene las clases relacionadas con la gestión de usuarios.
- */
+/** Paquete que contiene las clases relacionadas con la gestión de usuarios. */
 package com.taller.usuarios;
