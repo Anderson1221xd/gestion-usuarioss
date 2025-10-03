@@ -115,7 +115,7 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Construir imagen Docker
-        run: docker buildx build -t ${{ secrets.DOCKER_USERNAME }}/gestion-usuarios:latest .
+        run: docker buildx build --load -t ${{ secrets.DOCKER_USERNAME }}/gestion-usuarios:latest .
 
       - name: Probar contenedor
         run: docker run --rm ${{ secrets.DOCKER_USERNAME }}/gestion-usuarios:latest
