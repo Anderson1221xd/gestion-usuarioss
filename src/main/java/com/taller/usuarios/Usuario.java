@@ -3,7 +3,8 @@ package com.taller.usuarios;
 import java.util.Objects;
 
 /**
- * Representa a un usuario dentro del sistema. Contiene la información básica como identificador,
+ * Representa a un usuario dentro del sistema.
+ * Contiene la información básica como identificador,
  * nombre, correo electrónico y contraseña.
  */
 public final class Usuario {
