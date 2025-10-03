@@ -13,32 +13,39 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 /**
  * Pruebas unitarias para {@link UsuarioService}.
- * <p>
- * Se validan los métodos de creación, búsqueda, eliminación,
+ *
+ * <p>Se validan los métodos de creación, búsqueda, eliminación,
  * actualización de email, conteo de usuarios, y la implementación
  * de equals, hashCode y toString de {@link Usuario}.
  * </p>
  */
-
-
 class UsuarioServiceTest {
 
     /**
-     * Servicio de usuarios que se inicializa antes de cada prueba.
+     * Instancia del servicio de usuarios utilizada en las pruebas.
+     * Se inicializa en {@link #setUp()} y se libera en {@link #tearDown()}.
      */
     private UsuarioService service;
 
-
+    /**
+     * Configura el entorno antes de cada prueba,
+     * creando una nueva instancia del servicio.
+     */
     @BeforeEach
     void setUp() {
         service = new UsuarioService();
     }
 
+    /**
+     * Limpia el entorno después de cada prueba,
+     * estableciendo el servicio en {@code null}.
+     */
     @AfterEach
     void tearDown() {
         service = null;
     }
 
+    /** Verifica que se pueda crear un usuario válido. */
     @Test
     void crearUsuarioDeberiaAgregarNuevoUsuario() {
         Usuario u = new Usuario("1", "Anderson", "anderson@mail.com", "1234");
@@ -46,6 +53,7 @@ class UsuarioServiceTest {
         assertEquals(1, service.contarUsuarios());
     }
 
+    /** Verifica que no se puedan crear dos usuarios con el mismo ID. */
     @Test
     void crearUsuarioConIdDuplicadoNoDebeAgregar() {
         Usuario u1 = new Usuario("1", "Anderson", "a@mail.com", "1234");
@@ -55,12 +63,14 @@ class UsuarioServiceTest {
         assertEquals(1, service.contarUsuarios());
     }
 
+    /** Verifica que no se pueda crear un usuario nulo. */
     @Test
     void crearUsuarioConUsuarioNullNoDebeAgregar() {
         assertFalse(service.crearUsuario(null));
         assertEquals(0, service.contarUsuarios());
     }
 
+    /** Verifica que no se pueda crear un usuario con ID nulo. */
     @Test
     void crearUsuarioConIdNullNoDebeAgregar() {
         Usuario u = new Usuario(null, "Name", "mail@mail.com", "pass");
@@ -68,6 +78,7 @@ class UsuarioServiceTest {
         assertEquals(0, service.contarUsuarios());
     }
 
+    /** Verifica que se pueda buscar un usuario existente. */
     @Test
     void buscarUsuarioExistenteDeberiaRetornarUsuario() {
         Usuario u = new Usuario("1", "Anderson", "mail@mail.com", "1234");
@@ -77,16 +88,19 @@ class UsuarioServiceTest {
         assertEquals("Anderson", encontrado.getNombre());
     }
 
+    /** Verifica que al buscar un usuario inexistente se retorne null. */
     @Test
     void buscarUsuarioInexistenteDeberiaRetornarNull() {
         assertNull(service.buscarUsuario("99"));
     }
 
+    /** Verifica que al buscar con ID nulo se retorne null. */
     @Test
     void buscarUsuarioConIdNullDeberiaRetornarNull() {
         assertNull(service.buscarUsuario(null));
     }
 
+    /** Verifica que se pueda eliminar un usuario existente. */
     @Test
     void eliminarUsuarioExistenteDeberiaEliminarlo() {
         Usuario u = new Usuario("1", "Anderson", "mail@mail.com", "1234");
@@ -95,16 +109,19 @@ class UsuarioServiceTest {
         assertEquals(0, service.contarUsuarios());
     }
 
+    /** Verifica que no se pueda eliminar un usuario inexistente. */
     @Test
     void eliminarUsuarioInexistenteDeberiaRetornarFalse() {
         assertFalse(service.eliminarUsuario("100"));
     }
 
+    /** Verifica que no se pueda eliminar un usuario con ID nulo. */
     @Test
     void eliminarUsuarioConIdNullDeberiaRetornarFalse() {
         assertFalse(service.eliminarUsuario(null));
     }
 
+    /** Verifica que se pueda actualizar el email de un usuario existente. */
     @Test
     void actualizarEmailExistenteDeberiaActualizarlo() {
         Usuario u = new Usuario("1", "Anderson", "old@mail.com", "1234");
@@ -113,16 +130,19 @@ class UsuarioServiceTest {
         assertEquals("new@mail.com", service.buscarUsuario("1").getEmail());
     }
 
+    /** Verifica que no se pueda actualizar el email de un usuario inexistente. */
     @Test
     void actualizarEmailUsuarioNoExistenteDeberiaRetornarFalse() {
         assertFalse(service.actualizarEmail("1", "new@mail.com"));
     }
 
+    /** Verifica que no se pueda actualizar el email con un ID nulo. */
     @Test
     void actualizarEmailConIdNullDeberiaRetornarFalse() {
         assertFalse(service.actualizarEmail(null, "new@mail.com"));
     }
 
+    /** Verifica que no se pueda actualizar el email a null. */
     @Test
     void actualizarEmailConEmailNullDeberiaRetornarFalse() {
         Usuario u = new Usuario("1", "Anderson", "old@mail.com", "1234");
@@ -130,6 +150,7 @@ class UsuarioServiceTest {
         assertFalse(service.actualizarEmail("1", null));
     }
 
+    /** Verifica que se cuenten correctamente los usuarios creados. */
     @Test
     void contarUsuariosDeberiaRetornarCantidadCorrecta() {
         assertEquals(0, service.contarUsuarios());
@@ -138,6 +159,7 @@ class UsuarioServiceTest {
         assertEquals(2, service.contarUsuarios());
     }
 
+    /** Verifica que {@code existeUsuario} retorne true si el usuario existe. */
     @Test
     void existeUsuarioDeberiaRetornarTrueSiExiste() {
         Usuario u = new Usuario("1", "Anderson", "mail@mail.com", "1234");
@@ -145,11 +167,13 @@ class UsuarioServiceTest {
         assertTrue(service.existeUsuario("1"));
     }
 
+    /** Verifica que {@code existeUsuario} retorne false si el usuario no existe. */
     @Test
     void existeUsuarioDeberiaRetornarFalseSiNoExiste() {
         assertFalse(service.existeUsuario("99"));
     }
 
+    /** Verifica que el constructor y getters de Usuario funcionen correctamente. */
     @Test
     void constructorYGettersFuncionanCorrectamente() {
         Usuario u = new Usuario("1", "Anderson", "mail@mail.com", "1234");
@@ -159,6 +183,7 @@ class UsuarioServiceTest {
         assertEquals("1234", u.getPassword());
     }
 
+    /** Verifica que los setters actualicen correctamente los valores. */
     @Test
     void settersDeberianActualizarValores() {
         Usuario u = new Usuario("1", "Anderson", "mail@mail.com", "1234");
@@ -172,6 +197,7 @@ class UsuarioServiceTest {
         assertEquals("nuevaClave", u.getPassword());
     }
 
+    /** Verifica que equals y hashCode estén implementados correctamente. */
     @Test
     void equalsYHashCodeFuncionanCorrectamente() {
         Usuario u1 = new Usuario("1", "Anderson", "a@mail.com", "1234");
@@ -183,6 +209,7 @@ class UsuarioServiceTest {
         assertNotEquals(u1, u3);
     }
 
+    /** Verifica que equals retorne false al comparar con null o con otro tipo. */
     @Test
     void equalsConNullYDistintoTipoDevuelveFalse() {
         Usuario u = new Usuario("1", "Anderson", "a@mail.com", "1234");
@@ -190,6 +217,7 @@ class UsuarioServiceTest {
         assertNotEquals(u, "un string");
     }
 
+    /** Verifica que toString no retorne null y contenga la palabra "Usuario". */
     @Test
     void toStringNoEsNull() {
         Usuario u = new Usuario("1", "Anderson", "a@mail.com", "1234");
