@@ -6,6 +6,11 @@ on:
   pull_request:
     branches: [ "main" ]
 
+# permisos mínimos para el GITHUB_TOKEN (evita "write-all" y problemas con Checkov)
+permissions:
+  contents: read
+  checks: write
+
 jobs:
   lint:
     runs-on: ubuntu-latest
@@ -39,9 +44,13 @@ jobs:
       - name: Ejecutar Super-Linter
         uses: github/super-linter@v6
         env:
+          # valida todo el código del repo
           VALIDATE_ALL_CODEBASE: true
           DEFAULT_BRANCH: main
+          # token para que super-linter pueda anotar el commit (requiere permisos)
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # IGNORA archivos generados (por ejemplo target/site/jacoco/...)
+          FILTER_REGEX_EXCLUDE: 'target/.*'
 
   test:
     runs-on: ubuntu-latest
@@ -59,7 +68,7 @@ jobs:
         run: mvn clean verify
 
       - name: Guardar reporte de cobertura
-        uses: actions/upload-artifact@v4   # 🔥 actualizado
+        uses: actions/upload-artifact@v4
         with:
           name: coverage-report
           path: target/site/jacoco/
@@ -81,7 +90,7 @@ jobs:
         run: mvn package -DskipTests
 
       - name: Subir artefacto empaquetado
-        uses: actions/upload-artifact@v4   # 🔥 actualizado
+        uses: actions/upload-artifact@v4
         with:
           name: app-build
           path: target/*.jar
