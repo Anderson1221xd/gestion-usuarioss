@@ -46,6 +46,8 @@ jobs:
         env:
           # valida todo el código del repo
           VALIDATE_ALL_CODEBASE: true
+          #obtener detalles
+          OUTPUT_DETAILS: detailed
           DEFAULT_BRANCH: main
           # token para que super-linter pueda anotar el commit (requiere permisos)
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
