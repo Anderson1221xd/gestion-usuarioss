@@ -1,10 +1,24 @@
 package com.taller.usuarios;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterEach;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
+/**
+ * Pruebas unitarias para {@link UsuarioService}.
+ * <p>
+ * Se validan los métodos de creación, búsqueda, eliminación,
+ * actualización de email, conteo de usuarios, y la implementación
+ * de equals, hashCode y toString de {@link Usuario}.
+ * </p>
+ */
 class UsuarioServiceTest {
 
     private UsuarioService service;
@@ -14,15 +28,20 @@ class UsuarioServiceTest {
         service = new UsuarioService();
     }
 
+    @AfterEach
+    void tearDown() {
+        service = null;
+    }
+
     @Test
-    void crearUsuario_deberiaAgregarNuevoUsuario() {
+    void crearUsuarioDeberiaAgregarNuevoUsuario() {
         Usuario u = new Usuario("1", "Anderson", "anderson@mail.com", "1234");
         assertTrue(service.crearUsuario(u));
         assertEquals(1, service.contarUsuarios());
     }
 
     @Test
-    void crearUsuario_conIdDuplicado_noDebeAgregar() {
+    void crearUsuarioConIdDuplicadoNoDebeAgregar() {
         Usuario u1 = new Usuario("1", "Anderson", "a@mail.com", "1234");
         Usuario u2 = new Usuario("1", "Sebas", "s@mail.com", "5678");
         assertTrue(service.crearUsuario(u1));
@@ -31,20 +50,20 @@ class UsuarioServiceTest {
     }
 
     @Test
-    void crearUsuario_conUsuarioNull_noDebeAgregar() {
+    void crearUsuarioConUsuarioNullNoDebeAgregar() {
         assertFalse(service.crearUsuario(null));
         assertEquals(0, service.contarUsuarios());
     }
 
     @Test
-    void crearUsuario_conIdNull_noDebeAgregar() {
+    void crearUsuarioConIdNullNoDebeAgregar() {
         Usuario u = new Usuario(null, "Name", "mail@mail.com", "pass");
         assertFalse(service.crearUsuario(u));
         assertEquals(0, service.contarUsuarios());
     }
 
     @Test
-    void buscarUsuario_existente_deberiaRetornarUsuario() {
+    void buscarUsuarioExistenteDeberiaRetornarUsuario() {
         Usuario u = new Usuario("1", "Anderson", "mail@mail.com", "1234");
         service.crearUsuario(u);
         Usuario encontrado = service.buscarUsuario("1");
@@ -53,17 +72,17 @@ class UsuarioServiceTest {
     }
 
     @Test
-    void buscarUsuario_inexistente_deberiaRetornarNull() {
+    void buscarUsuarioInexistenteDeberiaRetornarNull() {
         assertNull(service.buscarUsuario("99"));
     }
 
     @Test
-    void buscarUsuario_conIdNull_deberiaRetornarNull() {
+    void buscarUsuarioConIdNullDeberiaRetornarNull() {
         assertNull(service.buscarUsuario(null));
     }
 
     @Test
-    void eliminarUsuario_existente_deberiaEliminarlo() {
+    void eliminarUsuarioExistenteDeberiaEliminarlo() {
         Usuario u = new Usuario("1", "Anderson", "mail@mail.com", "1234");
         service.crearUsuario(u);
         assertTrue(service.eliminarUsuario("1"));
@@ -71,17 +90,17 @@ class UsuarioServiceTest {
     }
 
     @Test
-    void eliminarUsuario_inexistente_deberiaRetornarFalse() {
+    void eliminarUsuarioInexistenteDeberiaRetornarFalse() {
         assertFalse(service.eliminarUsuario("100"));
     }
 
     @Test
-    void eliminarUsuario_conIdNull_deberiaRetornarFalse() {
+    void eliminarUsuarioConIdNullDeberiaRetornarFalse() {
         assertFalse(service.eliminarUsuario(null));
     }
 
     @Test
-    void actualizarEmail_existente_deberiaActualizarlo() {
+    void actualizarEmailExistenteDeberiaActualizarlo() {
         Usuario u = new Usuario("1", "Anderson", "old@mail.com", "1234");
         service.crearUsuario(u);
         assertTrue(service.actualizarEmail("1", "new@mail.com"));
@@ -89,24 +108,24 @@ class UsuarioServiceTest {
     }
 
     @Test
-    void actualizarEmail_usuarioNoExistente_deberiaRetornarFalse() {
+    void actualizarEmailUsuarioNoExistenteDeberiaRetornarFalse() {
         assertFalse(service.actualizarEmail("1", "new@mail.com"));
     }
 
     @Test
-    void actualizarEmail_conIdNull_deberiaRetornarFalse() {
+    void actualizarEmailConIdNullDeberiaRetornarFalse() {
         assertFalse(service.actualizarEmail(null, "new@mail.com"));
     }
 
     @Test
-    void actualizarEmail_conEmailNull_deberiaRetornarFalse() {
+    void actualizarEmailConEmailNullDeberiaRetornarFalse() {
         Usuario u = new Usuario("1", "Anderson", "old@mail.com", "1234");
         service.crearUsuario(u);
         assertFalse(service.actualizarEmail("1", null));
     }
 
     @Test
-    void contarUsuarios_deberiaRetornarCantidadCorrecta() {
+    void contarUsuariosDeberiaRetornarCantidadCorrecta() {
         assertEquals(0, service.contarUsuarios());
         service.crearUsuario(new Usuario("1", "A", "a@mail.com", "123"));
         service.crearUsuario(new Usuario("2", "B", "b@mail.com", "456"));
@@ -114,19 +133,19 @@ class UsuarioServiceTest {
     }
 
     @Test
-    void existeUsuario_deberiaRetornarTrueSiExiste() {
+    void existeUsuarioDeberiaRetornarTrueSiExiste() {
         Usuario u = new Usuario("1", "Anderson", "mail@mail.com", "1234");
         service.crearUsuario(u);
         assertTrue(service.existeUsuario("1"));
     }
 
     @Test
-    void existeUsuario_deberiaRetornarFalseSiNoExiste() {
+    void existeUsuarioDeberiaRetornarFalseSiNoExiste() {
         assertFalse(service.existeUsuario("99"));
     }
 
     @Test
-    void constructorYGetters_funcionanCorrectamente() {
+    void constructorYGettersFuncionanCorrectamente() {
         Usuario u = new Usuario("1", "Anderson", "mail@mail.com", "1234");
         assertEquals("1", u.getId());
         assertEquals("Anderson", u.getNombre());
@@ -135,7 +154,7 @@ class UsuarioServiceTest {
     }
 
     @Test
-    void setters_deberianActualizarValores() {
+    void settersDeberianActualizarValores() {
         Usuario u = new Usuario("1", "Anderson", "mail@mail.com", "1234");
 
         u.setNombre("NuevoNombre");
@@ -148,7 +167,7 @@ class UsuarioServiceTest {
     }
 
     @Test
-    void equalsYHashCode_funcionanCorrectamente() {
+    void equalsYHashCodeFuncionanCorrectamente() {
         Usuario u1 = new Usuario("1", "Anderson", "a@mail.com", "1234");
         Usuario u2 = new Usuario("1", "Anderson", "a@mail.com", "1234");
         Usuario u3 = new Usuario("2", "Sebas", "s@mail.com", "5678");
@@ -159,14 +178,14 @@ class UsuarioServiceTest {
     }
 
     @Test
-    void equals_conNullYDistintoTipo_devuelveFalse() {
+    void equalsConNullYDistintoTipoDevuelveFalse() {
         Usuario u = new Usuario("1", "Anderson", "a@mail.com", "1234");
         assertNotEquals(u, null);
         assertNotEquals(u, "un string");
     }
 
     @Test
-    void toString_noEsNull() {
+    void toStringNoEsNull() {
         Usuario u = new Usuario("1", "Anderson", "a@mail.com", "1234");
         assertTrue(u.toString().contains("Usuario"));
     }

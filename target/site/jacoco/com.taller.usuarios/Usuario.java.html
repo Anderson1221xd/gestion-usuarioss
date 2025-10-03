@@ -3,89 +3,144 @@
 import java.util.Objects;
 
 /**
- * Clase que representa a un usuario dentro del sistema.
+ * Representa a un usuario dentro del sistema.
+ * Contiene la información básica como identificador,
+ * nombre, correo electrónico y contraseña.
  */
-public class Usuario {
+public final class Usuario {
+
+    /** Identificador único del usuario. */
     private String id;
+
+    /** Nombre del usuario. */
     private String nombre;
+
+    /** Correo electrónico del usuario. */
     private String email;
+
+    /** Contraseña del usuario. */
     private String password;
 
     /**
-     * Constructor para inicializar un usuario.
+     * Crea un nuevo usuario con los datos especificados.
      *
-     * @param id identificador único del usuario
-     * @param nombre nombre del usuario
-     * @param email correo electrónico del usuario
-     * @param password contraseña del usuario
+     * @param idUsuario identificador único del usuario
+     * @param nombreUsuario nombre del usuario
+     * @param emailUsuario correo electrónico del usuario
+     * @param passwordUsuario contraseña del usuario
      */
-    public Usuario(final String id, final String nombre,
-<span class="fc" id="L23">                   final String email, final String password) {</span>
-<span class="fc" id="L24">        this.id = id;</span>
-<span class="fc" id="L25">        this.nombre = nombre;</span>
-<span class="fc" id="L26">        this.email = email;</span>
-<span class="fc" id="L27">        this.password = password;</span>
-<span class="fc" id="L28">    }</span>
-
-    // Getters
-    public String getId() {
-<span class="fc" id="L32">        return id;</span>
-    }
-
-    public String getNombre() {
-<span class="fc" id="L36">        return nombre;</span>
-    }
-
-    public String getEmail() {
-<span class="fc" id="L40">        return email;</span>
-    }
-
-    public String getPassword() {
-<span class="fc" id="L44">        return password;</span>
-    }
-
-    // Setters
-    public void setNombre(final String nombre) {
-<span class="fc" id="L49">        this.nombre = nombre;</span>
-<span class="fc" id="L50">    }</span>
-
-    public void setEmail(final String email) {
-<span class="fc" id="L53">        this.email = email;</span>
-<span class="fc" id="L54">    }</span>
-
-    public void setPassword(final String password) {
-<span class="fc" id="L57">        this.password = password;</span>
-<span class="fc" id="L58">    }</span>
+    public Usuario(final String idUsuario, final String nombreUsuario,
+<span class="fc" id="L33">                   final String emailUsuario, final String passwordUsuario) {</span>
+<span class="fc" id="L34">        this.id = idUsuario;</span>
+<span class="fc" id="L35">        this.nombre = nombreUsuario;</span>
+<span class="fc" id="L36">        this.email = emailUsuario;</span>
+<span class="fc" id="L37">        this.password = passwordUsuario;</span>
+<span class="fc" id="L38">    }</span>
 
     /**
-     * Compara si dos usuarios son iguales.
+     * Obtiene el identificador único del usuario.
+     *
+     * @return id del usuario
+     */
+    public String getId() {
+<span class="fc" id="L46">        return id;</span>
+    }
+
+    /**
+     * Obtiene el nombre del usuario.
+     *
+     * @return nombre del usuario
+     */
+    public String getNombre() {
+<span class="fc" id="L55">        return nombre;</span>
+    }
+
+    /**
+     * Obtiene el correo electrónico del usuario.
+     *
+     * @return email del usuario
+     */
+    public String getEmail() {
+<span class="fc" id="L64">        return email;</span>
+    }
+
+    /**
+     * Obtiene la contraseña del usuario.
+     *
+     * @return contraseña del usuario
+     */
+    public String getPassword() {
+<span class="fc" id="L73">        return password;</span>
+    }
+
+    /**
+     * Actualiza el nombre del usuario.
+     *
+     * @param nuevoNombre nuevo nombre
+     */
+    public void setNombre(final String nuevoNombre) {
+<span class="fc" id="L82">        this.nombre = nuevoNombre;</span>
+<span class="fc" id="L83">    }</span>
+
+    /**
+     * Actualiza el correo electrónico del usuario.
+     *
+     * @param nuevoEmail nuevo correo
+     */
+    public void setEmail(final String nuevoEmail) {
+<span class="fc" id="L91">        this.email = nuevoEmail;</span>
+<span class="fc" id="L92">    }</span>
+
+    /**
+     * Actualiza la contraseña del usuario.
+     *
+     * @param nuevaPassword nueva contraseña
+     */
+    public void setPassword(final String nuevaPassword) {
+<span class="fc" id="L100">        this.password = nuevaPassword;</span>
+<span class="fc" id="L101">    }</span>
+
+    /**
+     * Compara si dos objetos son iguales basándose
+     * en sus atributos.
      *
      * @param obj objeto a comparar
      * @return true si son iguales, false en caso contrario
      */
     @Override
     public boolean equals(final Object obj) {
-<span class="pc bpc" id="L68" title="1 of 2 branches missed.">        if (this == obj) {</span>
-<span class="nc" id="L69">            return true;</span>
+<span class="pc bpc" id="L112" title="1 of 2 branches missed.">        if (this == obj) {</span>
+<span class="nc" id="L113">            return true;</span>
         }
-<span class="fc bfc" id="L71" title="All 2 branches covered.">        if (!(obj instanceof Usuario)) {</span>
-<span class="fc" id="L72">            return false;</span>
+<span class="fc bfc" id="L115" title="All 2 branches covered.">        if (!(obj instanceof Usuario)) {</span>
+<span class="fc" id="L116">            return false;</span>
         }
-<span class="fc" id="L74">        Usuario usuario = (Usuario) obj;</span>
-<span class="fc bfc" id="L75" title="All 2 branches covered.">        return Objects.equals(id, usuario.id)</span>
-<span class="pc bpc" id="L76" title="1 of 2 branches missed.">                &amp;&amp; Objects.equals(nombre, usuario.nombre)</span>
-<span class="pc bpc" id="L77" title="1 of 2 branches missed.">                &amp;&amp; Objects.equals(email, usuario.email)</span>
-<span class="pc bpc" id="L78" title="1 of 2 branches missed.">                &amp;&amp; Objects.equals(password, usuario.password);</span>
+<span class="fc" id="L118">        final Usuario usuario = (Usuario) obj;</span>
+<span class="fc bfc" id="L119" title="All 2 branches covered.">        return Objects.equals(id, usuario.id)</span>
+<span class="pc bpc" id="L120" title="1 of 2 branches missed.">                &amp;&amp; Objects.equals(nombre, usuario.nombre)</span>
+<span class="pc bpc" id="L121" title="1 of 2 branches missed.">                &amp;&amp; Objects.equals(email, usuario.email)</span>
+<span class="pc bpc" id="L122" title="1 of 2 branches missed.">                &amp;&amp; Objects.equals(password, usuario.password);</span>
     }
 
+    /**
+     * Calcula el hash del usuario en función
+     * de sus atributos.
+     *
+     * @return código hash del usuario
+     */
     @Override
     public int hashCode() {
-<span class="fc" id="L83">        return Objects.hash(id, nombre, email, password);</span>
+<span class="fc" id="L133">        return Objects.hash(id, nombre, email, password);</span>
     }
 
+    /**
+     * Retorna una representación en cadena del usuario.
+     *
+     * @return representación en formato String
+     */
     @Override
     public String toString() {
-<span class="fc" id="L88">        return &quot;Usuario{&quot;</span>
+<span class="fc" id="L143">        return &quot;Usuario{&quot;</span>
                 + &quot;id='&quot; + id + '\''
                 + &quot;, nombre='&quot; + nombre + '\''
                 + &quot;, email='&quot; + email + '\''
