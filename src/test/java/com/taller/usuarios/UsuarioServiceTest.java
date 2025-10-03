@@ -19,9 +19,15 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
  * de equals, hashCode y toString de {@link Usuario}.
  * </p>
  */
+
+
 class UsuarioServiceTest {
 
+    /**
+     * Servicio de usuarios que se inicializa antes de cada prueba.
+     */
     private UsuarioService service;
+
 
     @BeforeEach
     void setUp() {
