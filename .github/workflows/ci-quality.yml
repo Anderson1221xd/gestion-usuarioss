@@ -1,4 +1,4 @@
-name: CI Pipeline
+name: CI Quality Pipeline
 
 on:
   push:
@@ -6,13 +6,15 @@ on:
   pull_request:
     branches: [ "main" ]
 
-# permisos mínimos para el GITHUB_TOKEN (evita "write-all" y problemas con Checkov)
 permissions:
   contents: read
   checks: write
 
 jobs:
-  lint:
+  # ======================
+  # 1. LINTER (Checkstyle)
+  # ======================
+  linter:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout código
@@ -32,9 +34,12 @@ jobs:
             sudo apt-get install -y maven
           fi
 
-      - name: Revisar estilo de código con Checkstyle
-        run: mvn checkstyle:check
+      - name: Ejecutar Checkstyle
+        run: mvn -q checkstyle:check
 
+  # ============================
+  # 2. SUPER-LINTER (incluye GJF)
+  # ============================
   super-linter:
     runs-on: ubuntu-latest
     steps:
@@ -44,19 +49,18 @@ jobs:
       - name: Ejecutar Super-Linter
         uses: github/super-linter@v6
         env:
-          VALIDATE_JAVA: true
-          VALIDATE_MARKDOWN: true
-          VALIDATE_YAML: true
-          VALIDATE_ALL_CODEBASE: false
+          VALIDATE_ALL_CODEBASE: true
           OUTPUT_DETAILS: detailed
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           FILTER_REGEX_EXCLUDE: 'target/.*'
-  
 
-
+  # =========================
+  # 3. TESTS + COVERAGE
+  # =========================
   test:
     runs-on: ubuntu-latest
+    needs: [linter, super-linter]
     steps:
       - name: Checkout código
         uses: actions/checkout@v3
@@ -67,15 +71,18 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - name: Instalar dependencias y correr pruebas con coverage
-        run: mvn clean verify
+      - name: Ejecutar pruebas y JaCoCo
+        run: mvn -q clean verify
 
-      - name: Guardar reporte de cobertura
+      - name: Subir reporte de cobertura
         uses: actions/upload-artifact@v4
         with:
           name: coverage-report
           path: target/site/jacoco/
 
+  # =======================
+  # 4. BUILD DE LA APP
+  # =======================
   build:
     runs-on: ubuntu-latest
     needs: test
@@ -90,17 +97,20 @@ jobs:
           java-version: 17
 
       - name: Empaquetar aplicación
-        run: mvn package -DskipTests
+        run: mvn -q package -DskipTests
 
-      - name: Subir artefacto empaquetado
+      - name: Subir artefacto
         uses: actions/upload-artifact@v4
         with:
           name: app-build
           path: target/*.jar
 
+  # ======================
+  # 5. DOCKER OPTIONAL
+  # ======================
   docker:
     runs-on: ubuntu-latest
-    needs: [test, build]
+    needs: build
     if: ${{ success() }}
     steps:
       - name: Checkout código
@@ -117,7 +127,6 @@ jobs:
 
       - name: Construir imagen Docker
         run: docker buildx build --load -t ${{ secrets.DOCKER_USERNAME }}/gestion-usuarios:latest .
-
 
       - name: Probar contenedor
         run: docker run --rm ${{ secrets.DOCKER_USERNAME }}/gestion-usuarios:latest
