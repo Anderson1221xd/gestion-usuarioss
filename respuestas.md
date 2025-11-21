@@ -2,7 +2,7 @@
 
 Durante la ejecución del pipeline de CI, los logs permiten identificar claramente en qué etapa ocurrió un fallo. Estas son las señales para cada caso:
 
-🔹 1.1 Fallos del Linter (Google Java Format)
+ 1.1 Fallos del Linter (Google Java Format)
 
 Los errores del linter aparecen usualmente con mensajes como:
 
@@ -24,7 +24,7 @@ Buscar palabras clave: format, style, google-java-format, error.
 
 Ver que el workflow no avanza a la etapa de build.
 
-🔹 1.2 Fallos en Pruebas Unitarias (JUnit)
+1.2 Fallos en Pruebas Unitarias (JUnit)
 
 Cuando falla una prueba, JUnit muestra:
 
@@ -41,7 +41,7 @@ Tests run: 4, Failures: 1, Errors: 0, Skipped: 0
 
 El pipeline falla automáticamente.
 
-🔹 1.3 Fallos por Cobertura (JaCoCo)
+1.3 Fallos por Cobertura (JaCoCo)
 
 El plugin de JaCoCo valida un mínimo definido (en este caso, 80%).
 
@@ -59,7 +59,7 @@ Los logs muestran:
 El job termina con exit code 1.
 
 2. Ejecución fallida vs exitosa
-🔹 2.1 Ejecución Fallida (obligatoria para el parcial)
+2.1 Ejecución Fallida (obligatoria para el parcial)
 
 Para generar un run fallido se puede:
 
@@ -77,7 +77,7 @@ Mensajes de error visibles (JUnit, JaCoCo o linter)
 
 El pipeline se detiene en ese punto
 
-🔹 2.2 Ejecución Exitosa
+2.2 Ejecución Exitosa
 
 Para generar un run exitoso:
 
