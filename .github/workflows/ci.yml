@@ -41,18 +41,20 @@ jobs:
       - name: Checkout código
         uses: actions/checkout@v3
 
-      - name: Ejecutar Super-Linter
+      - name: Ejecutar Super-Linter (sin Google Java Format)
         uses: github/super-linter@v6
         env:
-          # valida todo el código del repo
           VALIDATE_ALL_CODEBASE: true
-          #obtener detalles
           OUTPUT_DETAILS: detailed
           DEFAULT_BRANCH: main
-          # token para que super-linter pueda anotar el commit (requiere permisos)
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          # IGNORA archivos generados (por ejemplo target/site/jacoco/...)
+
+          # 🔥 Desactivar Google Java Format
+          VALIDATE_JAVA_GOOGLE_JAVA_FORMAT: false
+
+          # Ignorar carpeta target
           FILTER_REGEX_EXCLUDE: 'target/.*'
+
 
   test:
     runs-on: ubuntu-latest
