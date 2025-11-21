@@ -28,7 +28,7 @@ Proceso posterior a la CI donde el sistema se despliega automáticamente (o semi
 En este proyecto solo se usa CI, no CD.
 
 1.2 Lenguaje, linter y cobertura seleccionados
-🔹 Lenguaje: Java (Maven)
+Lenguaje: Java (Maven)
 
 Justificación:
 
@@ -38,7 +38,7 @@ Tiene plugins integrados para cobertura.
 
 Es ampliamente compatible con GitHub Actions y act.
 
-🔹 Linter utilizado: Google Java Format
+Linter utilizado: Google Java Format
 
 Justificación:
 
@@ -48,7 +48,7 @@ Garantiza estilo consistente entre todos los archivos.
 
 Se integra fácilmente con CI y plugins de Maven.
 
-🔹 Cobertura: JaCoCo
+Cobertura: JaCoCo
 
 Justificación:
 
@@ -141,7 +141,7 @@ act
 
 En el archivo RESPUESTAS.md se explica:
 
-🔹 Cómo identificar fallos en:
+Cómo identificar fallos en:
 
 Linter
 
@@ -157,21 +157,15 @@ Cobertura
 
 El plugin de JaCoCo mostrará que el umbral no se cumple
 
-🔹 Ejecución fallida
+Ejecución fallida
 
 Debe incluir una captura donde:
 
-El linter falle
-
-o
-
-La cobertura esté por debajo del 80%
-
-o
+El linter falle o La cobertura esté por debajo del 80% o
 
 Una prueba falle
 
-🔹 Ejecución exitosa
+Ejecución exitosa
 
 Debe incluir una captura donde:
 
@@ -187,13 +181,13 @@ Job finalice con estado verde ("success")
 
 En el archivo RESPUESTAS.md se explica:
 
-🔹 Métodos para detectar código generado por IA:
+Métodos para detectar código generado por IA:
 
 Análisis de patrones mediante detectores (GPTZero, CodeWhisperer Detector, etc.)
 
 Análisis estadístico de estilo (consistencia, patrones repetitivos, uniformidad anómala)
 
-🔹 Por qué NO se puede garantizar autoría al 100%
+- Por qué NO se puede garantizar autoría al 100%
 
 Los modelos de IA se entrenan en código real
 
@@ -201,7 +195,7 @@ Humanos y IA pueden escribir código similar
 
 Es imposible tener certeza total solo con patrones estilísticos
 
-🔹 Políticas razonables de uso de IA
+- Políticas razonables de uso de IA
 
 Uso permitido para documentación y explicación
 
