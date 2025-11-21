@@ -80,9 +80,7 @@ jobs:
           name: coverage-report
           path: target/site/jacoco/
 
-  # =======================
-  # 4. BUILD DE LA APP
-  # =======================
+
   build:
     runs-on: ubuntu-latest
     needs: test
@@ -105,9 +103,7 @@ jobs:
           name: app-build
           path: target/*.jar
 
-  # ======================
-  # 5. DOCKER OPTIONAL
-  # ======================
+
   docker:
     runs-on: ubuntu-latest
     needs: build

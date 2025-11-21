@@ -6,7 +6,7 @@ on:
   pull_request:
     branches: [ "main" ]
 
-# permisos mínimos para el GITHUB_TOKEN (evita "write-all" y problemas con Checkov)
+
 permissions:
   contents: read
   checks: write
@@ -52,7 +52,7 @@ jobs:
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           FILTER_REGEX_EXCLUDE: 'target/.*'
-  
+
 
 
   test:
