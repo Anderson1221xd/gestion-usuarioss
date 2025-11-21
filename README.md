@@ -241,7 +241,7 @@ target/site/jacoco/index.html
 |-- RESPUESTAS.md
 |-- .github/workflows/ci.yml
 
-8. Autor
+8. Estudiante:
 
 Anderson Castilla
-Proyecto académico – Calidad de Software Avanzado
+
